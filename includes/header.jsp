@@ -100,25 +100,39 @@
     
     <!-- 드롭다운 메뉴를 위한 스타일 및 스크립트 -->
     <style>
-        /* 드롭다운 메뉴 스타일 */
-        .main-nav ul li.dropdown {
-            position: relative;
-        }
-        
-        .main-nav ul li.dropdown .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: var(--card-bg);
-            box-shadow: var(--shadow-md);
-            border-radius: 6px;
-            min-width: 200px;
-            z-index: 1000;
-            padding: 8px 0;
-            margin-top: 5px;
-        }
-        
+        /* 드롭다운 메뉴 스타일 - 수정된 버전 */
+.main-nav ul li.dropdown {
+    position: relative;
+}
+
+.main-nav ul li.dropdown .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-md);
+    border-radius: 6px;
+    min-width: 200px;
+    z-index: 1000;
+    padding: 8px 0;
+    margin-top: 0; /* 기존 5px에서 0으로 변경 */
+}
+
+/* hover 영역을 확장하기 위한 가상 요소 추가 */
+.main-nav ul li.dropdown .dropdown-menu::before {
+    content: '';
+    position: absolute;
+    top: -8px; /* 상단으로 8px 확장 */
+    left: 0;
+    right: 0;
+    height: 8px;
+    background: transparent;
+}
+
+.main-nav ul li.dropdown:hover .dropdown-menu {
+    display: block;
+}
         
         .main-nav ul li.dropdown:hover .dropdown-menu {
             display: block;

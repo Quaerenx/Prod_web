@@ -8,6 +8,7 @@
 <style>
     .troubleshooting-management {
         width: 100%;
+	min-height: 800px;
         max-width: 1000px;
         margin: 0 auto;
         padding: var(--space-32) var(--space-16);
