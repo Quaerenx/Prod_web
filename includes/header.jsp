@@ -101,38 +101,39 @@
     <!-- 드롭다운 메뉴를 위한 스타일 및 스크립트 -->
     <style>
         /* 드롭다운 메뉴 스타일 - 수정된 버전 */
-.main-nav ul li.dropdown {
-    position: relative;
-}
-
-.main-nav ul li.dropdown .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--card-bg);
-    box-shadow: var(--shadow-md);
-    border-radius: 6px;
-    min-width: 200px;
-    z-index: 1000;
-    padding: 8px 0;
-    margin-top: 0; /* 기존 5px에서 0으로 변경 */
-}
-
-/* hover 영역을 확장하기 위한 가상 요소 추가 */
-.main-nav ul li.dropdown .dropdown-menu::before {
-    content: '';
-    position: absolute;
-    top: -8px; /* 상단으로 8px 확장 */
-    left: 0;
-    right: 0;
-    height: 8px;
-    background: transparent;
-}
-
-.main-nav ul li.dropdown:hover .dropdown-menu {
-    display: block;
-}
+		.main-nav ul li.dropdown {
+		    position: relative;
+		}
+		
+		.main-nav ul li.dropdown .dropdown-menu {
+		    display: none;
+		    position: absolute;
+		    top: 100%;
+		    left: 0;
+		    background-color: var(--card-bg);
+		    box-shadow: var(--shadow-md);
+		    border-radius: 6px;
+		    min-width: 200px;
+		    z-index: 1000;
+		    padding: 8px 0;
+		    margin-top: 0; /* 기존 5px에서 0으로 변경 */
+		}
+		
+		/* hover 영역을 확장하기 위한 가상 요소 추가 */
+		.main-nav ul li.dropdown .dropdown-menu::before {
+		    content: '';
+		    position: absolute;
+		    top: -8px; /* 상단으로 8px 확장 */
+		    left: 0;
+		    right: 0;
+		    height: 8px;
+		    background: transparent;
+		}
+		
+		.main-nav ul li.dropdown:hover .dropdown-menu {
+		    display: block;
+		}
+        
         
         .main-nav ul li.dropdown:hover .dropdown-menu {
             display: block;
@@ -192,7 +193,7 @@
         .ml-1 {
             margin-left: 5px;
         }
-    </style>
+</style>
     
     <script>
         $(document).ready(function() {
@@ -209,27 +210,14 @@
             const query = window.location.search;
             
             // 자료관리 메뉴 활성화
-            if (path.includes('/archive')) {
-                $('.main-nav ul li.dropdown').eq(0).addClass('active');
-                
-                if (query.includes('category=business')) {
-                    $('.main-nav ul li.dropdown').eq(0).find('.dropdown-toggle').text('업무자료');
-                } else if (query.includes('category=meeting')) {
-                    $('.main-nav ul li.dropdown').eq(0).find('.dropdown-toggle').text('회의자료');
-                } else if (query.includes('category=etc')) {
-                    $('.main-nav ul li.dropdown').eq(0).find('.dropdown-toggle').text('기타자료');
-                }
+ 		    if (path.includes('/archive') || path.includes('/meeting') || path.includes('/downlist') || path.includes('/troubleshooting')) {
+        	$('.main-nav ul li.dropdown').eq(1).addClass('active');
             }
             
             // 고객관리 메뉴 활성화
             if (path.includes('/customers') || path.includes('/maintenance')) {
-                $('.main-nav ul li.dropdown').eq(1).addClass('active');
+            $('.main-nav ul li.dropdown').eq(0).addClass('active');
                 
-                if (path.includes('/customers')) {
-                    $('.main-nav ul li.dropdown').eq(1).find('.dropdown-toggle').text('고객사 정보');
-                } else if (path.includes('/maintenance')) {
-                    $('.main-nav ul li.dropdown').eq(1).find('.dropdown-toggle').text('정기점검 이력');
-                }
             }
         });
     </script>
